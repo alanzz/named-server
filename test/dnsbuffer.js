@@ -50,7 +50,7 @@ function encode(data) {
         for (i in tokens) {
                 var t = '0x' + tokens[i];
                 var v = parseInt(t);
-                buffer.writeInt8(v, pos++, true);
+                buffer.writeUInt8(v, pos++, true);
         }
         return buffer;
 }
