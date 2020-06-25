@@ -1,7 +1,7 @@
 {
   "name": "named-server",
   "description": "DNS server library for node.js (fork of trevoro/node-named)",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "author": "artur99 <me@artur99.net>",
   "contributors": [
     "Mark Cavage",
