@@ -8,7 +8,7 @@ aims to implement all of the *common* functionality that is in use today.
 This fork was created as the original node-named module was not
 actively maintained anymore. The fork has, until now:
 * Fixed IPv4 address binding (Error binding to ipv4 interface: EINVAL)
-* Fixed bug where an invalid response was being sent if the query had some authority records
+* Fixed bug where an invalid response was being sent if the query had some additional records
 * Added PTR records
 
 
@@ -25,10 +25,10 @@ server.listen(9999, '127.0.0.1', function() {
 server.on('query', function(query) {
     var domain = query.name()
     console.log('DNS Query: %s', domain)
-    
+
     var target = new named.SOARecord(domain, {serial: 12345})
     query.addAnswer(domain, target, ttl)
-    
+
     server.send(query)
 });
 ```
