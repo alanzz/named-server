@@ -12,9 +12,9 @@ actively maintained anymore. The fork has, until now:
 * Fixed IPv4 address binding (Error binding to ipv4 interface: EINVAL)
 * Fixed bug where an invalid response was being sent if the query had some additional records
 
-## Insallation
+## Installation
 ```bash
-npm install named-server
+$ npm install named-server
 ```
 
 ## Creating a DNS Server
