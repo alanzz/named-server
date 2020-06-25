@@ -1,32 +1,38 @@
-# node-named - DNS Server in Node.js
+# named-server - DNS Server in Node.js
 
-Node-named is a lightweight DNS server written in pure javascript. It has
-limited support for the DNS spec, but aims to implement all of the *common*
-functionality that is in use today.
+Named-server (a fork of [trevoro/node-named](https://github.com/trevoro/node-named)) is a lightweight DNS server
+written in pure javascript. It has limited support for the DNS spec, but
+aims to implement all of the *common* functionality that is in use today.
 
-** This project is not actively maintained **
-I've received a lot of great PRs for this project, but I don't have the capacity to actively maintain this library at the moment. I feel strongly about maintaining backwards compatibility for people who rely on it, so any PRs would also need to adhere to keeping the API sane, or contribute to some improvement in performance.
 
+This fork was created as the original node-named module was not
+actively maintained anymore. The fork has, until now:
+* Fixed IPv4 address binding (Error binding to ipv4 interface: EINVAL)
+* Fixed bug where an invalid response was being sent if the query had some authority records
+* Added PTR records
 
 
 ## Creating a DNS Server
 ```javascript
-var named = require('./lib/index');
-var server = named.createServer();
-var ttl = 300;
+const named = require('named-server')
+const server = named.createServer()
+var ttl = 300
 
 server.listen(9999, '127.0.0.1', function() {
-  console.log('DNS server started on port 9999');
+    console.log('DNS server started on port 9999')
 });
 
 server.on('query', function(query) {
-  var domain = query.name();
-  console.log('DNS Query: %s', domain)
-  var target = new named.SOARecord(domain, {serial: 12345});
-  query.addAnswer(domain, target, ttl);
-  server.send(query);
+    var domain = query.name()
+    console.log('DNS Query: %s', domain)
+    
+    var target = new named.SOARecord(domain, {serial: 12345})
+    query.addAnswer(domain, target, ttl)
+    
+    server.send(query)
 });
 ```
+
 ## Creating DNS Records
 
 node-named provides helper functions for creating DNS records.
@@ -36,7 +42,7 @@ remember that these DNS records are not permanently added to the server.
 They only exist for the length of the particular request. After that, they are
 destroyed. This means you have to create your own lookup mechanism.
 ```javascript
-var named = require('node-named');
+var named = require('named-server');
 
 var soaRecord = new named.SOARecord('example.com', {serial: 201205150000});
 console.log(soaRecord);
@@ -71,7 +77,6 @@ bunyan by default. Your logger must expose the functions 'info', 'debug',
 
  * Better record validation
  * Create DNS client for query recursor
- * Add support for PTR records
  * Add support for TCP AXFR requests
 
 ## Tell me even more...
