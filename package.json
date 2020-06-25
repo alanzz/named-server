@@ -1,14 +1,16 @@
 {
-  "name": "named",
-  "description": "DNS server library for node.js",
+  "name": "named-server",
+  "description": "DNS server library for node.js (fork of trevoro/node-named)",
   "version": "0.0.1",
-  "author": "trevoro <trevoro@gmail.com>",
+  "author": "artur99 <me@artur99.net>",
   "contributors": [
-    "Mark Cavage"
+    "Mark Cavage",
+    "trevoro",
+    "artur99"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/trevoro/node-named.git"
+    "url": "git://github.com/artur99/named-server.git"
   },
   "main": "lib/index.js",
   "engines": {
