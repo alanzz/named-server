@@ -16,6 +16,9 @@
   "engines": {
     "node": ">=0.6"
   },
+  "scripts": {
+      "test": "nodeunit test/*.test.js"
+  },
   "dependencies": {
     "bunyan": "0.7.0",
     "ipaddr.js": "0.1.1"
