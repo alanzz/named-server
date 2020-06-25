@@ -7,10 +7,15 @@ aims to implement all of the *common* functionality that is in use today.
 
 This fork was created as the original node-named module was not
 actively maintained anymore. The fork has, until now:
+* Added PTR records
+* Added method to add Authority and Additional answers to response
 * Fixed IPv4 address binding (Error binding to ipv4 interface: EINVAL)
 * Fixed bug where an invalid response was being sent if the query had some additional records
-* Added PTR records
 
+## Insallation
+```bash
+npm install named-server
+```
 
 ## Creating a DNS Server
 ```javascript
